@@ -40,7 +40,6 @@ X_train = pca.transform(X_train)
 #pca.fit(X_test)
 X_test = pca.transform(X_test)
 
-
 clf = svm.SVC(kernel='rbf', C=10, decision_function_shape='ovr', gamma='scale')
 clf.fit(X_train, y_train)
 y_pred = clf.predict(X_train)
