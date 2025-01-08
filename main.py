@@ -35,15 +35,15 @@ y_train = np.reshape(y_train, TRAIN_SIZE)
 #y_val = np.reshape(y_val, int(TRAIN_SIZE * CROSS_VALIDATION_SPLIT))
 
 pca = PCA(n_components=1000)
-print(X_train.shape)
 pca.fit(X_train)
 X_train = pca.transform(X_train)
 #pca.fit(X_test)
 X_test = pca.transform(X_test)
-print(X_train.shape)
 
 
-clf = svm.SVC(kernel='rbf', C=1.0, decision_function_shape='ovr', gamma='scale')
+clf = svm.SVC(kernel='rbf', C=10, decision_function_shape='ovr', gamma='scale')
 clf.fit(X_train, y_train)
+y_pred = clf.predict(X_train)
+print(accuracy_score(y_train, y_pred))
 y_pred = clf.predict(X_test)
 print(accuracy_score(y_test, y_pred))
